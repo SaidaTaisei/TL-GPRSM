@@ -9,6 +9,9 @@ or from github with pip.
 ## Document
 Document https://saidataisei.github.io/TL-GPRSM/
 
+## Tutorials (how to use TL-GPRSM)
+Tutorial: https://github.com/SaidaTaisei/TL-GPRSM/tree/main/Tutorial
+
 ## Citation
 ```
 @article{SAIDA2023107014,
