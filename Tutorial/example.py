@@ -18,7 +18,7 @@ if __name__=="__main__":
     test_y = np.array([beam_function(length, width, height, test_x[i,0], test_x[i,1], test_x[i,2]) for i in range(test_x.shape[0])])[:,np.newaxis]
     
     r2s = []
-    for i in range(50):
+    for i in range(5):
         target_x = sampling.latin_hypercube_sampling(5, 3, False)
         target_x = sampling.uniform_scaling(target_x, np.array([7.0e10*0.9, 5000.0*0.8, 10000.0*0.8]), np.array([7.0e10*1.1, 5000.0*1.2, 10000.0*1.2]))
         target_y = np.array([beam_function(length, width, height, target_x[i,0], target_x[i,1], target_x[i,2]) for i in range(target_x.shape[0])])[:,np.newaxis]
