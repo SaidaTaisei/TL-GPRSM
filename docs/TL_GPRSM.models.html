@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TL_GPRSM.models package &mdash; TL-GPRSM 1.0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TL-GPRSM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TL_GPRSM.models package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-TL_GPRSM.models.GPRSM">TL_GPRSM.models.GPRSM module</a><ul>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM"><code class="docutils literal notranslate"><span class="pre">GPRSM</span></code></a><ul>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.get_ard_contribution"><code class="docutils literal notranslate"><span class="pre">GPRSM.get_ard_contribution()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.get_part_contribution"><code class="docutils literal notranslate"><span class="pre">GPRSM.get_part_contribution()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.get_transfer_learning_effect"><code class="docutils literal notranslate"><span class="pre">GPRSM.get_transfer_learning_effect()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.inverse_normalize"><code class="docutils literal notranslate"><span class="pre">GPRSM.inverse_normalize()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.load_model"><code class="docutils literal notranslate"><span class="pre">GPRSM.load_model()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.normalize"><code class="docutils literal notranslate"><span class="pre">GPRSM.normalize()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.normalize_x"><code class="docutils literal notranslate"><span class="pre">GPRSM.normalize_x()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.optimize"><code class="docutils literal notranslate"><span class="pre">GPRSM.optimize()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.predict"><code class="docutils literal notranslate"><span class="pre">GPRSM.predict()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.save_model"><code class="docutils literal notranslate"><span class="pre">GPRSM.save_model()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.select_kernel_func"><code class="docutils literal notranslate"><span class="pre">GPRSM.select_kernel_func()</span></code></a></li>
+<li><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM.set_transfer_learning"><code class="docutils literal notranslate"><span class="pre">GPRSM.set_transfer_learning()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-TL_GPRSM.models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TL-GPRSM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TL_GPRSM.models package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/TL_GPRSM.models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tl-gprsm-models-package">
+<h1>TL_GPRSM.models package<a class="headerlink" href="#tl-gprsm-models-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-TL_GPRSM.models.GPRSM">
+<span id="tl-gprsm-models-gprsm-module"></span><h2>TL_GPRSM.models.GPRSM module<a class="headerlink" href="#module-TL_GPRSM.models.GPRSM" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TL_GPRSM.models.GPRSM.</span></span><span class="sig-name descname"><span class="pre">GPRSM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Matern52'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standardization'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.get_ard_contribution">
+<span class="sig-name descname"><span class="pre">get_ard_contribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.get_ard_contribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>get ARD contribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>normalized</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether normalized or not. Defaults to True.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ARD contributions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.get_part_contribution">
+<span class="sig-name descname"><span class="pre">get_part_contribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.get_part_contribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>get contribution of each part</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>contribution of common part, source part, target part (%)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tuple</em>[float, float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.get_transfer_learning_effect">
+<span class="sig-name descname"><span class="pre">get_transfer_learning_effect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.get_transfer_learning_effect" title="Permalink to this definition">¶</a></dt>
+<dd><p>get transfer learning effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>effect of transfer learning (%)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.inverse_normalize">
+<span class="sig-name descname"><span class="pre">inverse_normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.inverse_normalize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.load_model">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>load model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to load model</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>GPRSM model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#TL_GPRSM.models.GPRSM.GPRSM" title="TL_GPRSM.models.GPRSM.GPRSM">GPRSM</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.normalize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.normalize_x">
+<span class="sig-name descname"><span class="pre">normalize_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.normalize_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.optimize">
+<span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_restarts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>optimize GPR surrogate model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_iter</strong> (<em>int</em>) – max iteration number</p></li>
+<li><p><strong>messages</strong> (<em>bool</em><em>, </em><em>optional</em>) – print messages. Defaults to False.</p></li>
+<li><p><strong>num_restarts</strong> (<em>int</em><em>, </em><em>optional</em>) – number of restarts. Defaults to 10.</p></li>
+<li><p><strong>parallel</strong> (<em>bool</em><em>, </em><em>optional</em>) – is parallel. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict by GPR surrogate model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>test_x</strong> (<em>np.array</em>) – test data x (number of samples x number of features)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>predicted mean and variance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Tuple</em>[np.array, np.array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>save model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to save model</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.select_kernel_func">
+<span class="sig-name descname"><span class="pre">select_kernel_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.select_kernel_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>select kernel function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kernel_name</strong> (<em>str</em>) – kernel name (Matern52, Matern32, RBF, etc.)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>kernel function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GPy.kern</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.set_transfer_learning">
+<span class="sig-name descname"><span class="pre">set_transfer_learning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.set_transfer_learning" title="Permalink to this definition">¶</a></dt>
+<dd><p>set transfer learning</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_x</strong> (<em>numpy.ndarray</em>) – source data x of transfer learning (number of samples x number of features)</p></li>
+<li><p><strong>source_y</strong> (<em>numpy.ndarray</em>) – source data y of transfer learning (number of samples x 1)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-TL_GPRSM.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-TL_GPRSM.models" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Taisei Saida.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

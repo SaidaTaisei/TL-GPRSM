@@ -1,0 +1,21 @@
+TL\_GPRSM.models package
+========================
+
+Submodules
+----------
+
+TL\_GPRSM.models.GPRSM module
+-----------------------------
+
+.. automodule:: TL_GPRSM.models.GPRSM
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: TL_GPRSM.models
+   :members:
+   :undoc-members:
+   :show-inheritance:

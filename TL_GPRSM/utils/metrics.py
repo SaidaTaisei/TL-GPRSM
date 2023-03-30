@@ -2,6 +2,7 @@ import numpy as np
 
 def rmse(y_true, y_pred):
     """Root mean squared error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -12,6 +13,7 @@ def rmse(y_true, y_pred):
 
 def mae(y_true, y_pred):
     """Mean absolute error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -22,6 +24,7 @@ def mae(y_true, y_pred):
 
 def mape(y_true, y_pred):
     """Mean absolute percentage error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -32,6 +35,7 @@ def mape(y_true, y_pred):
 
 def rmspe(y_true, y_pred):
     """Root mean squared percentage error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -42,6 +46,7 @@ def rmspe(y_true, y_pred):
 
 def r2_index(y_true, y_pred):
     """R2 index
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -52,6 +57,7 @@ def r2_index(y_true, y_pred):
 
 def mse(y_true, y_pred):
     """Mean squared error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -62,6 +68,7 @@ def mse(y_true, y_pred):
 
 def msle(y_true, y_pred):
     """Mean squared logarithmic error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -72,6 +79,7 @@ def msle(y_true, y_pred):
 
 def rmsle(y_true, y_pred):
     """Root mean squared logarithmic error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -82,6 +90,7 @@ def rmsle(y_true, y_pred):
 
 def wmae(y_true, y_pred, weights):
     """Weighted mean absolute error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -93,6 +102,7 @@ def wmae(y_true, y_pred, weights):
 
 def wmape(y_true, y_pred, weights):
     """Weighted mean absolute percentage error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -104,6 +114,7 @@ def wmape(y_true, y_pred, weights):
 
 def mpe(y_true, y_pred):
     """Mean percentage error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
@@ -114,6 +125,7 @@ def mpe(y_true, y_pred):
 
 def me(y_true, y_pred):
     """Mean error
+    
     Args:
         y_true (np.array): true values
         y_pred (np.array): predicted values
