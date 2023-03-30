@@ -3,7 +3,15 @@
 # License: MIT
 
 from setuptools import setup
-# import TL_GPRSM
+import codecs
+def read(fname):
+    with codecs.open(fname, 'r', 'latin') as f:
+        return f.read()
+    
+version_dummy = {}
+exec(read('TL_GPRSM/__version__.py'), version_dummy)
+VERSION = version_dummy['__version__']
+del version_dummy
 
 DESCRIPTION = "TL-GPRSM: Tlansfer Learning Gaussian Process Regression Surrogate Model"
 NAME = 'TL_GPRSM'
@@ -12,7 +20,6 @@ AUTHOR_EMAIL = 'saida.taisei.tj@alumni.tsukuba.ac.jp'
 URL = 'https://github.com/SaidaTaisei/TL-GPRSM'
 LICENSE = 'MIT License'
 DOWNLOAD_URL = 'https://github.com/SaidaTaisei/TL-GPRSM'
-VERSION = 1.0.3#TL_GPRSM.__version__
 PYTHON_REQUIRES = ">=3.8"
 
 INSTALL_REQUIRES = [
