@@ -1,0 +1,37 @@
+%  TL-GPRSM documentation master file, created by
+%  sphinx-quickstart on Thu Mar 30 18:57:34 2023.
+%  You can adapt this file completely to your liking, but it should at least
+%  contain the root `toctree` directive.
+
+# Welcome to TL-GPRSM's documentation!
+
+```{toctree}
+   :maxdepth: 3
+   :caption: Contents
+   :collapse: False
+```
+
+## Install
+You can install TL-GPRSM with pip.
+```
+pip install TL-GPRSM
+```  
+or  
+```
+pip install git+https://github.com/SaidaTaisei/TL-GPRSM
+```
+
+## Tutorials
+Example implementation in jupyter notebook  
+<a href=./tutorial/index.html>Tutorial is here</a>
+
+## Main module
+- <a href=./TL_GPRSM.models.html>TL_GPRSM.models.GPRSM module</a>
+- <a href=./TL_GPRSM.utils.html#module-TL_GPRSM.utils.sampling>TL_GPRSM.utils.sampling module</a>
+- <a href=./TL_GPRSM.utils.html#module-TL_GPRSM.utils.metrics>TL_GPRSM.utils.metrics module</a>
+
+## Indices and tables
+
+* {ref}`genindex`
+* {ref}`modindex`
+* {ref}`search`
