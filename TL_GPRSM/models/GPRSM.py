@@ -222,7 +222,9 @@ class GPRSM:
             print("Error: model is not transfer lerning", file=sys.stderr)
             return None
         contribution = self.get_ard_contribution(normalized=True)
-        effect = np.sum(contribution[:self.common_part_dim])
+        contribution_common = np.sum(contribution[:self.common_part_dim])
+        contribution_target = np.sum(contribution[self.common_part_dim+self.source_part_dim:])
+        effect = contribution_common / contribution_target
         return effect
     
     def get_part_contribution(self) -> typing.Tuple[float, float, float]:
@@ -312,14 +314,3 @@ class GPRSM:
         gprsm.model[:] = param_array
         gprsm.model.update_model(True)
         return gprsm
-
-if __name__=="__main__":
-    train_x = np.random.rand(10, 10)
-    train_y = np.random.rand(10, 1)
-    gp_sm = GPRSM(train_x, train_y, "Matern52", True)
-    gp_sm.optimize(max_iter=100)
-    gp_sm.save_model("test.h5")
-    gp_sm.load_model("test.h5")
-    # gp_sm.get_ard_contribution(normalized=True)
-    # gp_sm.get_part_contribution()
-    # print(type(train_x))
