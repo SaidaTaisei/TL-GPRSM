@@ -10,6 +10,7 @@ or from github with pip.
 Document https://saidataisei.github.io/TL-GPRSM/
 
 ## Tutorials (how to use TL-GPRSM)
+Tutorials are provided in jupyter notebook implementation.
 Tutorial: https://github.com/SaidaTaisei/TL-GPRSM/tree/master/Tutorial
 
 ## Citation
