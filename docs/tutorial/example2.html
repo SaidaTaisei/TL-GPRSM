@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example2 &mdash; TL-GPRSM 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            TL-GPRSM
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Example2</a><ul>
+<li><a class="reference internal" href="#Create-training-data">Create training data</a></li>
+<li><a class="reference internal" href="#Construct-TL-GPRSM">Construct TL-GPRSM</a></li>
+<li><a class="reference internal" href="#Evaluation">Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TL-GPRSM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/example2.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Example2">
+<h1>Example2<a class="headerlink" href="#Example2" title="Permalink to this heading">¶</a></h1>
+<p>This is an example2. In this example, a transfer learning Gaussian process regression surrogate model is constructed.</p>
+<div class="line-block">
+<div class="line">Here, the subject is a beam bending problem. The displacements of a cantilevered beam under horizontal and vertical loads are to be determined. The formula is as follows.</div>
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[D(\mathbf{x})=\frac{4 L^3}{E w t} \sqrt{\left(\frac{Y}{t^2}\right)^2+\left(\frac{X}{w^2}\right)^2}\]</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">where <span class="math notranslate nohighlight">\(D\)</span> is a displacement, <span class="math notranslate nohighlight">\(L\)</span> is a length, <span class="math notranslate nohighlight">\(E\)</span> is Young’s modulus, <span class="math notranslate nohighlight">\(w\)</span> is a width, <span class="math notranslate nohighlight">\(t\)</span> is a height, <span class="math notranslate nohighlight">\(X\)</span> is a horizontal load, <span class="math notranslate nohighlight">\(Y\)</span> is a vertical load.</div>
+</div>
+<p>First this function is defined.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">beam_function</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">yang_modulus</span><span class="p">,</span> <span class="n">load_horizontal</span><span class="p">,</span> <span class="n">load_vertical</span><span class="p">):</span>
+    <span class="n">displacement</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">length</span><span class="o">*</span><span class="n">length</span><span class="o">*</span><span class="n">length</span><span class="o">/</span><span class="n">yang_modulus</span><span class="o">/</span><span class="n">height</span><span class="o">/</span><span class="n">width</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">load_vertical</span><span class="o">/</span><span class="n">height</span><span class="o">/</span><span class="n">height</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">load_horizontal</span><span class="o">/</span><span class="n">width</span><span class="o">/</span><span class="n">width</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">displacement</span>
+</pre></div>
+</div>
+</div>
+<section id="Create-training-data">
+<h2>Create training data<a class="headerlink" href="#Create-training-data" title="Permalink to this heading">¶</a></h2>
+<p>Here, we assume that the source data is an analysis on members with different Young’s modulus. For other parameters, dimensions are assumed to be fixed and loads are assumed to be indeterminate.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TL_GPRSM.utils.sampling</span> <span class="k">as</span> <span class="nn">sampling</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">target_x</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">latin_hypercube_sampling</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">target_x</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">uniform_scaling</span><span class="p">(</span><span class="n">target_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.0e10</span><span class="o">*</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">5000.0</span><span class="o">*</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">10000.0</span><span class="o">*</span><span class="mf">0.8</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.0e10</span><span class="o">*</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">5000.0</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">10000.0</span><span class="o">*</span><span class="mf">1.2</span><span class="p">]))</span>
+<span class="n">target_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">beam_function</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">target_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">target_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">target_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">target_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">source_x</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">latin_hypercube_sampling</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">source_x</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">uniform_scaling</span><span class="p">(</span><span class="n">source_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.06e11</span><span class="o">*</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">5000.0</span><span class="o">*</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">10000.0</span><span class="o">*</span><span class="mf">0.8</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.06e11</span><span class="o">*</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">5000.0</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">10000.0</span><span class="o">*</span><span class="mf">1.2</span><span class="p">]))</span>
+<span class="n">source_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">beam_function</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">source_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">source_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">source_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">source_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">target_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">target_y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">source_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">source_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(10, 3) (10, 1) (50, 3) (50, 1)
+</pre></div></div>
+</div>
+</section>
+<section id="Construct-TL-GPRSM">
+<h2>Construct TL-GPRSM<a class="headerlink" href="#Construct-TL-GPRSM" title="Permalink to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TL_GPRSM.models.GPRSM</span> <span class="k">as</span> <span class="nn">GPRSM</span>
+
+<span class="n">gprsm</span> <span class="o">=</span> <span class="n">GPRSM</span><span class="p">(</span><span class="n">target_x</span><span class="p">,</span> <span class="n">target_y</span><span class="p">,</span> <span class="n">kernel_name</span><span class="o">=</span><span class="s2">&quot;Matern52&quot;</span><span class="p">)</span>
+<span class="n">gprsm</span><span class="o">.</span><span class="n">set_transfer_learning</span><span class="p">(</span><span class="n">source_x</span><span class="p">,</span> <span class="n">source_y</span><span class="p">)</span>
+<span class="n">gprsm</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mf">1e4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+ c:\Users\saida\Downloads\temp_0330\venv\lib\site-packages\paramz\transformations.py:111: RuntimeWarning:overflow encountered in expm1
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Optimization restart 1/10, f = -337.7729887430097
+Optimization restart 2/10, f = -337.4309989442386
+Optimization restart 3/10, f = -337.91045566764296
+Optimization restart 4/10, f = -337.4601961548478
+Optimization restart 5/10, f = -335.74369807361484
+Optimization restart 6/10, f = -335.7868282723364
+Optimization restart 7/10, f = -337.7697880453027
+Optimization restart 8/10, f = -337.90583014656556
+Optimization restart 9/10, f = -337.9105955093783
+Optimization restart 10/10, f = -337.4114574484434
+</pre></div></div>
+</div>
+</section>
+<section id="Evaluation">
+<h2>Evaluation<a class="headerlink" href="#Evaluation" title="Permalink to this heading">¶</a></h2>
+<p>Firest, get the ARD contribution.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contributions</span> <span class="o">=</span> <span class="n">gprsm</span><span class="o">.</span><span class="n">get_ard_contribution</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">contributions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2.11999180e+01 1.44326074e-01 2.73857023e+00 4.17810230e-01
+ 1.91054986e+00 3.49176740e-02 5.60770130e+01 3.88342730e-02
+ 1.74380606e+01]
+</pre></div></div>
+</div>
+<p>Second, get a effect of transfer learning.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tl_effect</span> <span class="o">=</span> <span class="n">gprsm</span><span class="o">.</span><span class="n">get_transfer_learning_effect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tl_effect</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.3274171965641457
+</pre></div></div>
+</div>
+<p>Finally, evaluate with r2 index.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">TL_GPRSM.utils.metrics</span> <span class="k">as</span> <span class="nn">metrics</span>
+
+<span class="n">test_x</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">latin_hypercube_sampling</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">test_x</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">uniform_scaling</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.0e10</span><span class="o">*</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">5000.0</span><span class="o">*</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">10000.0</span><span class="o">*</span><span class="mf">0.8</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.0e10</span><span class="o">*</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">5000.0</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">10000.0</span><span class="o">*</span><span class="mf">1.2</span><span class="p">]))</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">beam_function</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">test_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">test_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">test_x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">predict_y_mean</span><span class="p">,</span> <span class="n">predict_y_std</span> <span class="o">=</span> <span class="n">gprsm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_x</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">r2_index</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">predict_y_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.9999885656886551
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Taisei Saida.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
