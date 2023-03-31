@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TL_GPRSM.models package &mdash; TL-GPRSM 1.0.3 documentation</title>
+  <title>TL_GPRSM.models package &mdash; TL-GPRSM 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -148,7 +148,19 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.inverse_normalize">
 <span class="sig-name descname"><span class="pre">inverse_normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.inverse_normalize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>inverse normalize predicted data y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pred_y</strong> (<em>np.array</em>) – normalized predicted data y (number of samples x 1)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>inverse normalized predicted data y</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.load_model">
@@ -170,12 +182,36 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.normalize">
 <span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.normalize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>normalize training data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>normalizer</strong> (<em>str</em>) – normalizer (standardization, minmax, none)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>normalized training data x and y</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.normalize_x">
 <span class="sig-name descname"><span class="pre">normalize_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TL_GPRSM.models.GPRSM.GPRSM.normalize_x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>normalize input data x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inp_x</strong> (<em>np.array</em>) – input data x (number of samples x number of features)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>normalized input data x</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="TL_GPRSM.models.GPRSM.GPRSM.optimize">

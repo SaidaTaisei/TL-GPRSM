@@ -35,6 +35,14 @@ class GPRSM:
         self.is_optimized = False
     
     def normalize(self, normalizer):
+        """normalize training data
+
+        Args:
+            normalizer (str): normalizer (standardization, minmax, none)
+
+        Returns:
+            np.array: normalized training data x and y
+        """
         if normalizer=="standardization":
             self.mean_x = np.mean(self.train_x, axis=0)
             self.std_x = np.std(self.train_x, axis=0)
@@ -56,6 +64,14 @@ class GPRSM:
         return train_x, train_y
     
     def normalize_x(self, inp_x):
+        """normalize input data x
+
+        Args:
+            inp_x (np.array): input data x (number of samples x number of features)
+
+        Returns:
+            np.array: normalized input data x
+        """
         if self.normalizer=="standardization":
             inp_x = (inp_x - self.mean_x) / self.std_x
         elif self.normalizer=="minmax":
@@ -66,6 +82,14 @@ class GPRSM:
         return inp_x
     
     def inverse_normalize(self, pred_y):
+        """inverse normalize predicted data y
+
+        Args:
+            pred_y (np.array): normalized predicted data y (number of samples x 1)
+
+        Returns:
+            np.array: inverse normalized predicted data y
+        """
         if self.normalizer=="standardization":
             pred_y = pred_y * self.std_y + self.mean_y
         elif self.normalizer=="minmax":
