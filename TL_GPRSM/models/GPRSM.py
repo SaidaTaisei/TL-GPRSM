@@ -125,7 +125,7 @@ class GPRSM:
         if self.normalizer is not None:
             inp_x, inp_y = self.normalize(self.normalizer)
         else:
-            inp_x, inp_y = train_x, train_y
+            inp_x, inp_y = self.train_x, self.train_y
         self.model = GPy.models.GPRegression(X=inp_x, Y=inp_y, kernel=self.kernel, normalizer=False)
         self.common_part_dim = min_dim
         self.target_part_dim = self.target_x.shape[1]
