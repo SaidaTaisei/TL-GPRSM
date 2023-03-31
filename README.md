@@ -10,7 +10,7 @@ or from github with pip.
 Document https://saidataisei.github.io/TL-GPRSM/
 
 ## Tutorials (how to use TL-GPRSM)
-Tutorial: https://github.com/SaidaTaisei/TL-GPRSM/tree/main/Tutorial
+Tutorial: https://github.com/SaidaTaisei/TL-GPRSM/tree/master/Tutorial
 
 ## Citation
 ```
