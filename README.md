@@ -1,5 +1,9 @@
-# TL-GPRSM
+# TL-GPRSM: A python software for constructing transfer learning Gaussian process regression surrogate model with explainability
 The tool for Tlansfer Learning Gaussian Process Regression Surrogate Model
+
+## Code Ocean (This code is revewed for reproducibility)
+DOI: [10.24433/CO.4199237.v1](https://doi.org/10.24433/CO.4199237.v1)
+
 ## Install
 You can install TL-GPRSM from PyPi with pip.  
 `pip install TL-GPRSM`  
