@@ -197,7 +197,7 @@ class GPRSM:
             if self.target_part_dim <= self.source_part_dim:
                 self.test_x = np.hstack((test_x, np.zeros(shape=(self.test_x.shape[0], self.source_part_dim)), test_x))
             else:
-                self.test_x = np.hstack((test_x[:, self.source_part_dim], np.zeros(shape=(self.test_x.shape[0], self.source_part_dim)), test_x))
+                self.test_x = np.hstack((test_x[:, :self.source_part_dim], np.zeros(shape=(self.test_x.shape[0], self.source_part_dim)), test_x))
         if self.normalizer is not None:
             inp_x = self.normalize_x(self.test_x)
         else:
